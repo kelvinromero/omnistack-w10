@@ -46,7 +46,9 @@ module.exports = {
     },
 
     // TODO:
-    async destroy() {
+    async destroy(req, res) {
+        dev = await Dev.findByIdAndDelete(req.params.id);
 
+        return res.json(dev);
     },
 }
