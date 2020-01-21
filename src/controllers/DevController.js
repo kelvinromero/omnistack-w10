@@ -9,7 +9,7 @@ module.exports = {
 
         return response.json(devs)
     },
-    
+
     async store(request, response) {
         const { github_username, techs, latitude, longitude } = request.body;
 
@@ -33,19 +33,20 @@ module.exports = {
                 techs: techsArray,
                 location,
             })
-
+            /*  */
         }
 
         return response.json(dev);
     },
 
-    // TODO: 
-    async update(){
+    async update(req, response) {
+        dev = await Dev.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
 
+        return response.json(dev)
     },
 
     // TODO:
-    async destroy(){
+    async destroy() {
 
     },
 }
